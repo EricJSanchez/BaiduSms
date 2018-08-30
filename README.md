@@ -3,13 +3,13 @@
 
 官方没有给出php版本的短信发送sdk, 在此借鉴 http://www.thinkindrupal.com/node/5983 文章，并在此基础上将方法改成 `单例模式` 在原来的基础上更加容易调用
 
-- 1.打开 `BaiduSms.php ` 修改 sms函数中 `accessKey 、 secretAccessKey` 这两个参数登录百度云账号，在右上角头像的`安全认证`中可以获得
+- 打开 `BaiduSms.php ` 修改 sms函数中 `accessKey 、 secretAccessKey` 这两个参数登录百度云账号，在右上角头像的`安全认证`中可以获得
 
   如果发送模板固定，可以修改 init_array 中的 `invokeId、templateCode`,这样以后调用时，就无需在传这两个参数。
   
-- 2.修改命名空间，修改第二行的namespace,修改成为自己的目录。（laravel为例，我是放在 `app/Http/Library` 下）
+- 修改命名空间，修改第二行的namespace,修改成为自己的目录。（laravel为例，我是放在 `app/Http/Library` 下）
 
-- 3.调用
+- 调用
   ```
   $to = [
       //"invokeId" => "", //如果在类中已经设定好，则此处无需再写
@@ -33,4 +33,4 @@
     }
    /**********打印结果END************/
   ```
-- 4.sms函数接收两个数组参数 ，一个是发送的数据的数组，一个是初始化`endPoint、accessKey、secretAccessKey`的数组，如果不想在类中固定初始化的`key`,则传入第二个参数即可。例：BaiduSms::sms($to,$config)
+- sms函数接收两个数组参数 ，一个是发送的数据的数组，一个是初始化`endPoint、accessKey、secretAccessKey`的数组，如果不想在类中固定初始化的`key`,则传入第二个参数即可。例：BaiduSms::sms($to,$config)
